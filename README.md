@@ -15,3 +15,4 @@ JAAS - Java Authentication and Authorization services - a Java framework providi
 - Principal - define the current logged in user's actions - any method signature for a current logged-in user is defined by a principle's object
 - PrivilegedActions - Interface providing the functionality for defining what action a certain logged-in user can perform 
 - JAAS.config - the configuration file that sets the LoginModule functionality to true and enables the JAAS framework 
+
