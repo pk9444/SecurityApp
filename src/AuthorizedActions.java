@@ -41,13 +41,14 @@ public class AuthorizedActions {
                 case dragoon:
                     assignRole(roles[0]);
                     if(currentUser.equals("tyson")){
+                        //assignRole(roles[0]);
                       //  System.out.println("Role assigned: " + getRole());
                         PrivilegedAction<Object> p1 = ()->{
                             System.out.println("Action Authorized!");
                             return null;
                         };
                         Subject.doAs(loginContext.getSubject(),p1);
-                        System.out.println("Performed By:" + currentUser);
+                        System.out.println("Performed By: " + currentUser);
                     }
                     else {
                         System.err.println("You are not authorized to perform this action. Try something else ...");
@@ -56,7 +57,7 @@ public class AuthorizedActions {
                     break;
 
                 case drasil:
-                    assignRole(roles[2]);
+                    assignRole(roles[1]);
                     if(currentUser.equals("max")){
                        // System.out.println("Role assigned: " + getRole());
                         PrivilegedAction<Object> p2 = ()->{
@@ -64,7 +65,7 @@ public class AuthorizedActions {
                             return null;
                         };
                         Subject.doAs(loginContext.getSubject(),p2);
-                        System.out.println("Performed By:" + currentUser);
+                        System.out.println("Performed By: " + currentUser);
                     }
                     else {
                         System.err.println("You are not authorized to perform this action. Try something else ...");
