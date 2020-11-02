@@ -1,4 +1,3 @@
-
 # SecurityApp
 Implementing Security Tactics using JAAS - Java Authentication and Authorization Services
 
