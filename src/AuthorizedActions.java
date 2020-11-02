@@ -12,14 +12,26 @@ enum actions{
     drigger,
     dranzer,
     exit,
-    switchUser,
+    getRole,
     logout;
 }
 public class AuthorizedActions {
+    private static String role;
+
+    private static void assignRole(String temp){
+        role=temp;
+    }
+    private static String getRole(){
+        return role;
+    }
 
     boolean doAction(LoginContext loginContext){
         boolean flag=true;
-        System.out.println("Select Action ? : (dragoon, drasil, drigger, dranzer, logout, exit) ");
+        System.out.println("Select Action ? : (dragoon, drasil, drigger, dranzer, getRole, logout, exit) ");
+
+        String[] roles = {"dragon","tortoise","tiger","phoenix"};
+
+
         BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
         String currentUser = loginContext.getSubject().getPrincipals().iterator().next().getName();
 
@@ -27,13 +39,15 @@ public class AuthorizedActions {
             switch(actions.valueOf(br1.readLine())){
 
                 case dragoon:
+                    assignRole(roles[0]);
                     if(currentUser.equals("tyson")){
+                      //  System.out.println("Role assigned: " + getRole());
                         PrivilegedAction<Object> p1 = ()->{
                             System.out.println("Action Authorized!");
                             return null;
                         };
                         Subject.doAs(loginContext.getSubject(),p1);
-                        System.out.println("Performed By:"+currentUser);
+                        System.out.println("Performed By:" + currentUser);
                     }
                     else {
                         System.err.println("You are not authorized to perform this action. Try something else ...");
@@ -42,13 +56,15 @@ public class AuthorizedActions {
                     break;
 
                 case drasil:
+                    assignRole(roles[2]);
                     if(currentUser.equals("max")){
+                       // System.out.println("Role assigned: " + getRole());
                         PrivilegedAction<Object> p2 = ()->{
                             System.out.println("Action Authorized!");
                             return null;
                         };
                         Subject.doAs(loginContext.getSubject(),p2);
-                        System.out.println("Performed By:"+currentUser);
+                        System.out.println("Performed By:" + currentUser);
                     }
                     else {
                         System.err.println("You are not authorized to perform this action. Try something else ...");
@@ -57,13 +73,15 @@ public class AuthorizedActions {
                     break;
 
                 case drigger:
+                    assignRole(roles[2]);
                     if(currentUser.equals("ray")){
+                       // System.out.println("Role assigned: " + getRole());
                         PrivilegedAction<Object> p3 = ()->{
                             System.out.println("Action Authorized!");
                             return null;
                         };
                         Subject.doAs(loginContext.getSubject(),p3);
-                        System.out.println("Performed By:"+currentUser);
+                        System.out.println("Performed By: " + currentUser);
                     }
                     else {
                         System.err.println("You are not authorized to perform this action. Try something else ...");
@@ -72,13 +90,15 @@ public class AuthorizedActions {
                     break;
 
                 case dranzer:
+                    assignRole(roles[3]);
                     if(currentUser.equals("kai")){
+                       // System.out.println("Role assigned: " + getRole());
                         PrivilegedAction<Object> p4 = ()->{
                             System.out.println("Action Authorized!");
                             return null;
                         };
                         Subject.doAs(loginContext.getSubject(),p4);
-                        System.out.println("By:"+currentUser);
+                        System.out.println(" Performed By: " + currentUser);
                     }
                     else {
                         System.err.println("You are not authorized to perform this action. Try something else ...");
@@ -99,6 +119,10 @@ public class AuthorizedActions {
 //                    }
                     loginContext.logout();
                     flag=false;
+                    break;
+
+                case getRole:
+                    System.out.println("Role Assigned: " + getRole());
                     break;
 
                 case exit:
