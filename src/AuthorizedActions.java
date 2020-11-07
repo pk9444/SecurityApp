@@ -19,32 +19,32 @@ enum actions{
     logout;
 }
 public class AuthorizedActions {
-    private static String role;
-    private static String[] roles = {"dragon","tortoise","tiger","phoenix"};
+//    private static String role;
+//    private static String[] roles = {"dragon","tortoise","tiger","phoenix"};
+//
+//    private static void setRole(String temp){
+//        role=temp;
+//    }
+//    private static String getRole(){
+//        return role;
+//    }
 
-    private static void setRole(String temp){
-        role=temp;
-    }
-    private static String getRole(){
-        return role;
-    }
-
-    private static void assignRoles(String str){
-        switch (str) {
-            case "tyson":
-                setRole(roles[0]);
-                break;
-            case "max":
-                setRole(roles[1]);
-                break;
-            case "ray":
-                setRole(roles[2]);
-                break;
-            case "kai":
-                setRole(roles[3]);
-                break;
-        }
-    }
+//    private static void assignRoles(String str){
+//        switch (str) {
+//            case "tyson":
+//                setRole(roles[0]);
+//                break;
+//            case "max":
+//                setRole(roles[1]);
+//                break;
+//            case "ray":
+//                setRole(roles[2]);
+//                break;
+//            case "kai":
+//                setRole(roles[3]);
+//                break;
+//        }
+//    }
 
     boolean doAction(LoginContext loginContext){
         boolean flag=true;
@@ -72,15 +72,15 @@ public class AuthorizedActions {
 //                break;
 //        }
 
-        assignRoles(currentUser); //assigning through function call
+        LoginModuleClass.assignRoles(currentUser); //assigning through function call
 
         try{
             switch(actions.valueOf(br1.readLine())){
 
                 case dragoon:
 
-                    rMap.put(currentUser,getRole());
-                    if(getRole().equals(roles[0])){
+                    rMap.put(currentUser,LoginModuleClass.getRole());
+                    if(LoginModuleClass.getRole().equals(LoginModuleClass.roles[0])){
 
                         PrivilegedAction<Object> p1 = ()->{
                             System.out.println("Action Authorized!");
@@ -97,8 +97,8 @@ public class AuthorizedActions {
 
                 case drasil:
 
-                    rMap.put(currentUser,getRole());
-                    if(getRole().equals(roles[1])){
+                    rMap.put(currentUser,LoginModuleClass.getRole());
+                    if(LoginModuleClass.getRole().equals(LoginModuleClass.roles[1])){
 
                         PrivilegedAction<Object> p2 = ()->{
                             System.out.println("Action Authorized!");
@@ -115,8 +115,8 @@ public class AuthorizedActions {
 
                 case drigger:
 
-                    rMap.put(currentUser,getRole());
-                    if(getRole().equals(roles[2])){
+                    rMap.put(currentUser,LoginModuleClass.getRole());
+                    if(LoginModuleClass.getRole().equals(LoginModuleClass.roles[2])){
 
                         PrivilegedAction<Object> p3 = ()->{
                             System.out.println("Action Authorized!");
@@ -133,8 +133,8 @@ public class AuthorizedActions {
 
                 case dranzer:
 
-                    rMap.put(currentUser,getRole());
-                    if(getRole().equals(roles[3])){
+                    rMap.put(currentUser,LoginModuleClass.getRole());
+                    if(LoginModuleClass.getRole().equals(LoginModuleClass.roles[3])){
 
                         PrivilegedAction<Object> p4 = ()->{
                             System.out.println("Action Authorized!");
@@ -156,7 +156,7 @@ public class AuthorizedActions {
                     break;
 
                 case getRole:
-                    System.out.println("Role Assigned: " + getRole());
+                    System.out.println("Role Assigned: " + LoginModuleClass.getRole());
                     break;
 
                 case exit:
