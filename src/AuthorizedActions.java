@@ -20,15 +20,31 @@ enum actions{
 }
 public class AuthorizedActions {
     private static String role;
+    private static String[] roles = {"dragon","tortoise","tiger","phoenix"};
 
-    private static void assignRole(String temp){
+    private static void setRole(String temp){
         role=temp;
     }
     private static String getRole(){
         return role;
     }
-    private String[] roles = {"dragon","tortoise","tiger","phoenix"};
 
+    private static void assignRoles(String str){
+        switch (str) {
+            case "tyson":
+                setRole(roles[0]);
+                break;
+            case "max":
+                setRole(roles[1]);
+                break;
+            case "ray":
+                setRole(roles[2]);
+                break;
+            case "kai":
+                setRole(roles[3]);
+                break;
+        }
+    }
 
     boolean doAction(LoginContext loginContext){
         boolean flag=true;
@@ -40,21 +56,23 @@ public class AuthorizedActions {
         BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
         String currentUser = loginContext.getSubject().getPrincipals().iterator().next().getName();
 
-        //role assignment
-        switch (currentUser) {
-            case "tyson":
-                assignRole(roles[0]);
-                break;
-            case "max":
-                assignRole(roles[1]);
-                break;
-            case "ray":
-                assignRole(roles[2]);
-                break;
-            case "kai":
-                assignRole(roles[3]);
-                break;
-        }
+
+//        switch (currentUser) {
+//            case "tyson":
+//                assignRole(roles[0]);
+//                break;
+//            case "max":
+//                assignRole(roles[1]);
+//                break;
+//            case "ray":
+//                assignRole(roles[2]);
+//                break;
+//            case "kai":
+//                assignRole(roles[3]);
+//                break;
+//        }
+
+        assignRoles(currentUser); //assigning through function call
 
         try{
             switch(actions.valueOf(br1.readLine())){
