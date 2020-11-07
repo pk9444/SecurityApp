@@ -13,6 +13,15 @@ public class LoginModuleClass implements LoginModule {
 
     private static final String[][] group3 = {{"tyson","pass@12"},{"max","pass@34"},{"ray","pass@56"},{"kai","pass@78"}};
 
+    protected static String role;
+    protected static String[] roles = {"dragon","tortoise","tiger","phoenix"};
+
+    protected static void setRole(String temp){
+        role=temp;
+    }
+    protected  static String getRole(){
+        return role;
+    }
     @Override
     public void initialize(Subject subject, CallbackHandler callbackHandler, Map<String, ?> map, Map<String, ?> map1) {
         this.subject=subject;
@@ -86,5 +95,22 @@ public class LoginModuleClass implements LoginModule {
         subject.getPrincipals().remove(principal);
         subject = null;
         return true;
+    }
+
+    protected static void assignRoles(String str){
+        switch (str) {
+            case "tyson":
+                setRole(roles[0]);
+                break;
+            case "max":
+                setRole(roles[1]);
+                break;
+            case "ray":
+                setRole(roles[2]);
+                break;
+            case "kai":
+                setRole(roles[3]);
+                break;
+        }
     }
 }
