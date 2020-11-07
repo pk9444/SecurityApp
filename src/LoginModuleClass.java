@@ -15,7 +15,6 @@ public class LoginModuleClass implements LoginModule {
 
     protected static String role;
     protected static String[] roles = {"dragon","tortoise","tiger","phoenix"};
-
     protected static void setRole(String temp){
         role=temp;
     }
